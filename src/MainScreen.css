@@ -91,9 +91,9 @@ body, html, #root {
 }
 
 .category-card:hover {
-  transform: translateY(-8px) scale(1.04);
-  box-shadow: 0 0 32px #00eaffcc, 0 8px 32px #00eaff88;
-  border: 1.5px solid #00eaff;
+  transform: translateY(-4px) scale(1.025);
+  box-shadow: 0 0 16px #00eaff88, 0 4px 16px #00eaff44;
+  border: 1px solid #00eaff;
 }
 
 .category-icon {
