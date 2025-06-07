@@ -24,6 +24,19 @@ body, html, #root {
   background-size: 40px 40px;
 }
 
+.main-logo-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1100px;
+  max-width: 220vw;
+  opacity: 0.13;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
 .main-header {
   display: flex;
   justify-content: space-between;

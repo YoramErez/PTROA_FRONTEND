@@ -3,6 +3,8 @@ import Login from './Login';
 import './App.css';
 import './MainScreen.css';
 import { MdFolder, MdImage, MdVideocam, MdAudiotrack, MdDescription, MdLibraryBooks, MdMap, MdReport, MdBarChart, MdTrackChanges } from 'react-icons/md';
+import bgImg from './assets/blue-back.webp';
+import logoImg from './assets/logo.webp';
 
 const categories = [
   { key: 'cases', label: 'תיקי תופעה', icon: <MdFolder /> },
@@ -19,7 +21,16 @@ const categories = [
 
 function MainScreen() {
   return (
-    <div className="main-root">
+    <div
+      className="main-root"
+      style={{
+        background: `url(${bgImg}) no-repeat center center fixed`,
+        backgroundSize: 'cover',
+        position: 'relative',
+        overflow: 'hidden',
+      }}
+    >
+      <img src={logoImg} alt="לוגו הארגון" className="main-logo-bg" />
       <header className="main-header">
         <span className="system-name">NIGMA</span>
         <span className="page-title">מסך ראשי</span>
