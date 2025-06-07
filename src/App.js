@@ -2,18 +2,19 @@ import React, { useState } from 'react';
 import Login from './Login';
 import './App.css';
 import './MainScreen.css';
+import { MdFolder, MdImage, MdVideocam, MdAudiotrack, MdDescription, MdLibraryBooks, MdMap, MdReport, MdBarChart, MdTrackChanges } from 'react-icons/md';
 
 const categories = [
-  { key: 'cases', label: 'תיקי תופעה', icon: '📁' },
-  { key: 'images', label: 'תמונות', icon: '🖼️' },
-  { key: 'video', label: 'וידאו', icon: '🎥' },
-  { key: 'audio', label: 'אודיו', icon: '🎧' },
-  { key: 'docs', label: 'מסמכים', icon: '📄' },
-  { key: 'publications', label: 'פרסומים', icon: '📰' },
-  { key: 'maps', label: 'מפות', icon: '🗺️' },
-  { key: 'reports', label: 'דיווחים', icon: '📝' },
-  { key: 'stats', label: 'סטטיסטיקה', icon: '📊' },
-  { key: 'targets', label: 'יעדים', icon: '🎯' },
+  { key: 'cases', label: 'תיקי תופעה', icon: <MdFolder /> },
+  { key: 'images', label: 'תמונות', icon: <MdImage /> },
+  { key: 'video', label: 'וידאו', icon: <MdVideocam /> },
+  { key: 'audio', label: 'אודיו', icon: <MdAudiotrack /> },
+  { key: 'docs', label: 'מסמכים', icon: <MdDescription /> },
+  { key: 'publications', label: 'פרסומים', icon: <MdLibraryBooks /> },
+  { key: 'maps', label: 'מפות', icon: <MdMap /> },
+  { key: 'reports', label: 'דיווחים', icon: <MdReport /> },
+  { key: 'stats', label: 'סטטיסטיקה', icon: <MdBarChart /> },
+  { key: 'targets', label: 'יעדים', icon: <MdTrackChanges /> },
 ];
 
 function MainScreen() {

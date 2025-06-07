@@ -1,12 +1,27 @@
 body, html, #root {
-  background: #111;
+  background: #0a1623;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
 .main-root {
   min-height: 100vh;
-  background: #111;
+  background: #0a1623;
   color: #fff;
   font-family: 'Heebo', 'Arial', sans-serif;
+  position: relative;
+}
+
+.main-root::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: linear-gradient(0deg, rgba(0,255,255,0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,255,0.07) 1px, transparent 1px);
+  background-size: 40px 40px;
 }
 
 .main-header {
@@ -16,18 +31,22 @@ body, html, #root {
   padding: 32px 40px 24px 40px;
   background: transparent;
   font-size: 1.5rem;
+  z-index: 2;
+  position: relative;
 }
 
 .system-name {
   font-weight: bold;
-  color: #00bcd4;
+  color: #00eaff;
   letter-spacing: 2px;
+  text-shadow: 0 0 16px #00eaff99, 0 2px 8px #000a;
 }
 
 .page-title {
   font-weight: 500;
   color: #fff;
   font-size: 1.2rem;
+  text-shadow: 0 0 8px #00eaff99, 0 2px 8px #000a;
 }
 
 .categories-grid {
@@ -36,32 +55,39 @@ body, html, #root {
   gap: 32px;
   padding: 40px 10vw;
   justify-items: center;
+  z-index: 2;
+  position: relative;
 }
 
 .category-card {
-  background: linear-gradient(135deg, #232526 0%, #414345 100%);
+  background: rgba(10,22,35,0.92);
   border-radius: 18px;
-  box-shadow: 0 4px 24px 0 #0006;
+  border: 1px solid #00eaff;
+  box-shadow: 0 0 24px #00eaff33, 0 2px 8px #000a;
   width: 180px;
   height: 180px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transition: transform 0.15s, box-shadow 0.15s;
+  transition: transform 0.15s, box-shadow 0.15s, border 0.15s;
   cursor: pointer;
-  border: 2px solid transparent;
+  border: 1px solid #00eaff;
+  position: relative;
+  overflow: hidden;
 }
 
 .category-card:hover {
   transform: translateY(-8px) scale(1.04);
-  box-shadow: 0 8px 32px 0 #00bcd488;
-  border: 2px solid #00bcd4;
+  box-shadow: 0 0 32px #00eaffcc, 0 8px 32px #00eaff88;
+  border: 1.5px solid #00eaff;
 }
 
 .category-icon {
   font-size: 3.5rem;
   margin-bottom: 18px;
+  color: #00eaff;
+  text-shadow: 0 0 12px #00eaff99;
 }
 
 .category-label {
@@ -69,6 +95,7 @@ body, html, #root {
   font-weight: 500;
   color: #fff;
   text-align: center;
+  text-shadow: 0 0 8px #00eaff55;
 }
 
 @media (max-width: 600px) {
