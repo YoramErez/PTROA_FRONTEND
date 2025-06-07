@@ -1,0 +1,56 @@
+body, html, #root {
+  background: #111;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 80px;
+  direction: rtl;
+}
+
+.logo {
+  width: 120px;
+  margin-bottom: 32px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 300px;
+}
+
+input, button {
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+input {
+  background: #222;
+  color: #fff;
+  border: 1px solid #444;
+}
+
+input::placeholder {
+  color: #aaa;
+}
+
+button {
+  background: #1976d2;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background: #1565c0;
+} 
