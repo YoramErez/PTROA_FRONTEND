@@ -26,7 +26,7 @@ export default function AdminSidebar() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    // כאן אפשר להוסיף לוגיקה של ניקוי טוקן/סשן אם יש
+    // כאן אפשר להוסיף לוגיקה של ניקוי טוקנים/סשן אם צריך
     navigate('/admin-login');
   };
 
