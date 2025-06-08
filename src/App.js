@@ -9,6 +9,8 @@ import bgImg from './assets/blue-back.webp';
 import logoImg from './assets/logo.webp';
 import AdminLogin from './AdminLogin';
 import AdminLayout from './AdminLayout';
+import TailwindTest from './TailwindTest';
+import UserLogin from './UserLogin';
 
 const categories = [
   { key: 'cases', label: 'תיקי תופעה', icon: <MdFolder /> },
@@ -35,7 +37,7 @@ const dummyItems = {
   // ... אפשר להוסיף נתוני דמה לכל קטגוריה
 };
 
-function MainScreen() {
+function MainScreen({ onLogout }) {
   const navigate = useNavigate();
   return (
     <div
@@ -51,6 +53,14 @@ function MainScreen() {
       <header className="main-header">
         <span className="system-name">NIGMA</span>
         <span className="page-title">מסך ראשי</span>
+        {onLogout && (
+          <button
+            onClick={onLogout}
+            style={{ marginRight: 24, background: '#00eaff', color: '#0a1623', border: 'none', borderRadius: 8, padding: '8px 18px', fontWeight: 'bold', cursor: 'pointer', boxShadow: '0 0 8px #00eaff88' }}
+          >
+            התנתק
+          </button>
+        )}
       </header>
       <div className="categories-grid">
         {categories.map(cat => (
@@ -75,12 +85,22 @@ const Placeholder = ({ title }) => (
 );
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [userLoggedIn, setUserLoggedIn] = useState(false);
 
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<MainScreen />} />
+        <Route path="/login" element={<UserLogin onLogin={() => setUserLoggedIn(true)} />} />
+        <Route
+          path="/"
+          element={
+            userLoggedIn ? (
+              <MainScreen onLogout={() => setUserLoggedIn(false)} />
+            ) : (
+              <UserLogin onLogin={() => setUserLoggedIn(true)} />
+            )
+          }
+        />
         <Route path="/admin-login" element={<AdminLogin />} />
         <Route element={<AdminLayout />}>
           <Route path="/admin/dashboard" element={<Placeholder title="Dashboard" />} />
@@ -113,6 +133,7 @@ function App() {
             }
           />
         ))}
+        <Route path="/test" element={<TailwindTest />} />
       </Routes>
     </Router>
   );

@@ -6,7 +6,7 @@ function AdminLogin() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate('/admin-panel');
+    navigate('/admin/dashboard');
   };
 
   return (
