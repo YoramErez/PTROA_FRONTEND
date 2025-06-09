@@ -48,7 +48,7 @@ export default function AdminLayout() {
         }}
       />
       <AdminSidebar />
-      <main className="flex-1 ml-80 p-8 relative z-10">
+      <main className="flex-1 ml-80 p-8 relative z-10" style={{marginTop: '4.2rem'}}>
         <TopBar />
         <Outlet />
       </main>

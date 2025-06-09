@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../styles/Categories.css';
 
 const statistics = {
   images: 20,
@@ -55,33 +56,33 @@ export default function PhenomenaPage() {
   const updatedBy = 'editor';
 
   return (
-    <div className="min-h-screen p-8 text-white">
+    <div className="page-container">
       {/* Header + Create Button */}
-      <div className="flex items-center mb-6">
-        <h1 className="w-full text-3xl font-bold text-cyan-400 drop-shadow-lg text-right pr-4" dir="rtl" style={{letterSpacing: '1px'}}>תופעה: {phenomenon.name}</h1>
+      <div className="page-header">
+        <h1 className="page-title">תופעה: {phenomenon.name}</h1>
       </div>
 
       {/* Modal for creating phenomenon */}
       {showModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
-          <div className="bg-[#18283a] p-8 rounded-2xl shadow-lg min-w-[320px] flex flex-col gap-4 border border-cyan-400">
-            <h2 className="text-xl text-cyan-400 font-bold mb-2">צור תופעה חדשה</h2>
+        <div className="modal-overlay">
+          <div className="modal-container">
+            <h2 className="modal-title">צור תופעה חדשה</h2>
             <input
               type="text"
               placeholder="שם התופעה"
               value={newName}
               onChange={e => setNewName(e.target.value)}
-              className="p-3 rounded-lg border border-cyan-400 bg-[#101e2b] text-white focus:outline-none focus:ring-2 focus:ring-cyan-400"
+              className="modal-input"
             />
-            <div className="flex gap-2 mt-4">
+            <div className="modal-buttons">
               <button
-                className="bg-cyan-400 text-[#101e2b] font-bold rounded-lg p-3 hover:bg-cyan-300 transition flex-1"
+                className="modal-button modal-button-primary"
                 onClick={() => { setShowModal(false); setNewName(''); }}
               >
                 אישור
               </button>
               <button
-                className="bg-gray-600 text-white font-bold rounded-lg p-3 hover:bg-gray-500 transition flex-1"
+                className="modal-button modal-button-secondary"
                 onClick={() => setShowModal(false)}
               >
                 ביטול
@@ -91,98 +92,96 @@ export default function PhenomenaPage() {
         </div>
       )}
 
-      <div className="flex flex-col md:flex-row items-start gap-[10px] h-full">
+      <div className="main-content">
         {/* Main content */}
-        <div className="flex-1">
+        <div className="content-wrapper">
           {/* Description + Statistics side by side */}
-          <div className="mb-6 flex flex-col md:flex-row items-stretch gap-[10px] h-full">
-            <div className="flex-1 md:w-full h-full flex flex-col justify-between">
-              <div className="flex-1 flex flex-col">
-                <label className="block text-cyan-300 font-semibold mb-2 text-lg text-right mr-4" dir="rtl">הסבר על התופעה:</label>
+          <div className="description-section">
+            <div className="description-container">
+              <div className="description-content">
+                <div className="description-title-block">אפיון תופעה</div>
                 <textarea
-                  className="w-full min-h-[400px] max-h-[1000px] p-6 rounded-2xl border-2 border-cyan-400 bg-[#16202b] text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 resize-y text-lg shadow-lg text-right"
+                  className="description-textarea no-top-radius"
+                  placeholder="כאן ייכנס הסבר ארוך על התופעה..."
                   value={desc}
                   onChange={e => setDesc(e.target.value)}
                   dir="rtl"
                 />
               </div>
               {/* בלוק מידע על תאריכים */}
-              <div className="mt-2 mb-0 flex flex-col md:flex-row gap-2">
-                <div className="flex-1 bg-[#16202b] border border-cyan-400 rounded-xl px-4 py-2 text-xs text-cyan-200 flex flex-row items-center gap-2 text-right" dir="rtl">
-                  <span>נוסף בתאריך:</span>
-                  <span className="font-bold text-white">{createdAt}</span>
-                  <span>בשעה</span>
-                  <span className="font-bold text-white">{createdTime}</span>
-                  <span>ע"י</span>
-                  <span className="font-bold text-white">{createdBy}</span>
-                </div>
-                <div className="flex-1 bg-[#16202b] border border-cyan-400 rounded-xl px-4 py-2 text-xs text-cyan-200 flex flex-row items-center gap-2 text-right" dir="rtl">
+              <div className="info-block">
+                <div className="info-item">
                   <span>עודכן בתאריך:</span>
-                  <span className="font-bold text-white">{updatedAt}</span>
+                  <span className="info-value">{updatedAt}</span>
                   <span>בשעה</span>
-                  <span className="font-bold text-white">{updatedTime}</span>
+                  <span className="info-value">{updatedTime}</span>
                   <span>ע"י</span>
-                  <span className="font-bold text-white">{updatedBy}</span>
+                  <span className="info-value">{updatedBy}</span>
+                </div>
+                <div className="info-item">
+                  <span>נוסף בתאריך:</span>
+                  <span className="info-value">{createdAt}</span>
+                  <span>בשעה</span>
+                  <span className="info-value">{createdTime}</span>
+                  <span>ע"י</span>
+                  <span className="info-value">{createdBy}</span>
                 </div>
               </div>
             </div>
-            <div className="md:w-64 bg-[#16202b] rounded-2xl p-6 border border-cyan-400 shadow-lg h-full text-right flex flex-col justify-between items-stretch">
-              <h3 className="text-xl font-bold text-cyan-400 mb-4 border-b-2 border-cyan-400 pb-2">סטטיסטיקה</h3>
-              <ul className="space-y-2">
-                {categories.map(cat => (
-                  <li key={cat.key} className="flex justify-between items-center text-lg">
-                    <span className="text-cyan-100">{cat.label}</span>
-                    <span className="font-bold text-cyan-300">{statistics[cat.key] ?? 0}</span>
-                  </li>
-                ))}
-              </ul>
+            <div style={{width: '250px', minWidth: '180px'}}>
+              <div className="statistics-title-block">סטטיסטיקה</div>
+              <div className="statistics-content-block">
+                <ul className="statistics-list">
+                  {categories.map(cat => (
+                    <li key={cat.key} className="statistics-item">
+                      <span className="statistics-label">{cat.label}</span>
+                      <span className="statistics-value">{statistics[cat.key] ?? 0}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
 
           {/* Tabs + Tab content block */}
-          <div className="bg-[#18283a] border-2 border-cyan-400 rounded-2xl p-6 shadow-lg mt-6 min-h-[600px]">
-            {/* Tabs */}
-            <div className="border-b-2 border-cyan-400 flex gap-0 overflow-x-auto" dir="rtl">
-              {categories.map(cat => (
-                <button
-                  key={cat.key}
-                  className={
-                    "px-5 py-2 font-bold transition border-2 border-cyan-400 bg-[#16202b] text-cyan-200 hover:bg-cyan-800 hover:text-white shadow border-b-0 rounded-t-lg rounded-b-none rounded-bl-none rounded-br-none " +
-                    (activeTab === cat.key
-                      ? "bg-cyan-900 bg-[#0a1623] text-white border-b-0 border-b-cyan-300 shadow-lg z-10"
-                      : "border-b-2 border-b-cyan-400")
-                  }
-                  style={{marginLeft: 0, marginRight: 0}}
-                  onClick={() => setActiveTab(cat.key)}
-                >
-                  {cat.label}
-                  {statistics[cat.key] !== undefined && (
-                    <span className="ml-2 text-xs text-cyan-700 font-bold">({statistics[cat.key]})</span>
-                  )}
-                </button>
-              ))}
-            </div>
+          <div style={{marginTop: '1rem'}}>
+            <div className="relations-title-block">קשרים</div>
+            <div className="relations-content-block">
+              {/* Tabs */}
+              <div className="tabs-container">
+                {categories.map(cat => (
+                  <button
+                    key={cat.key}
+                    className={`tab-button ${activeTab === cat.key ? 'active' : ''}`}
+                    onClick={() => setActiveTab(cat.key)}
+                  >
+                    {cat.label}
+                    {statistics[cat.key] !== undefined && (
+                      <span className="tab-count">({statistics[cat.key]})</span>
+                    )}
+                  </button>
+                ))}
+              </div>
 
-            {/* Tab content */}
-            <div>
-              {(phenomenon.related[activeTab] && phenomenon.related[activeTab].length > 0) ? (
-                <ul className="divide-y divide-cyan-900 text-right" dir="rtl">
-                  {phenomenon.related[activeTab].map(item => (
-                    <li key={item.id} className="flex items-center py-4 px-2">
-                      <span className="font-bold text-cyan-300 mr-2">{item.title}</span>
-                      <span className="text-sm text-gray-400 mr-4">(ID: {item.id})</span>
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                <div className="text-gray-400 text-center py-8">אין רשומות להצגה בקטגוריה זו.</div>
-              )}
+              {/* Tab content */}
+              <div className="tab-content">
+                {(phenomenon.related[activeTab] && phenomenon.related[activeTab].length > 0) ? (
+                  <ul className="tab-list">
+                    {phenomenon.related[activeTab].map(item => (
+                      <li key={item.id} className="tab-list-item">
+                        <span className="tab-list-title">{item.title}</span>
+                        <span className="tab-list-id">(ID: {item.id})</span>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <div className="empty-tab-message">אין רשומות להצגה בקטגוריה זו.</div>
+                )}
+              </div>
             </div>
           </div>
         </div>
       </div>
-
-      <div className="hidden bg-cyan-900"></div>
     </div>
   );
 } 
