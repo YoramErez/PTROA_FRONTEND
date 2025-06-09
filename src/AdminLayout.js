@@ -1,4 +1,5 @@
 import React from 'react';
+import TopBar from './components/TopBar';
 import AdminSidebar from './AdminSidebar';
 import { Outlet } from 'react-router-dom';
 import bgImg from './assets/blue-back.webp';
@@ -48,6 +49,7 @@ export default function AdminLayout() {
       />
       <AdminSidebar />
       <main className="flex-1 ml-80 p-8 relative z-10">
+        <TopBar />
         <Outlet />
       </main>
     </div>

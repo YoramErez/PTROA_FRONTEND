@@ -11,6 +11,7 @@ import AdminLogin from './AdminLogin';
 import AdminLayout from './AdminLayout';
 import TailwindTest from './TailwindTest';
 import UserLogin from './UserLogin';
+import PhenomenaPage from './admin-pages/PhenomenaPage';
 
 const categories = [
   { key: 'cases', label: 'תיקי תופעה', icon: <MdFolder /> },
@@ -104,7 +105,7 @@ function App() {
         <Route path="/admin-login" element={<AdminLogin />} />
         <Route element={<AdminLayout />}>
           <Route path="/admin/dashboard" element={<Placeholder title="Dashboard" />} />
-          <Route path="/admin/phenomena" element={<Placeholder title="תופעות" />} />
+          <Route path="/admin/phenomena" element={<PhenomenaPage />} />
           <Route path="/admin/images" element={<Placeholder title="תמונות" />} />
           <Route path="/admin/videos" element={<Placeholder title="וידאו" />} />
           <Route path="/admin/audio" element={<Placeholder title="אודיו" />} />
